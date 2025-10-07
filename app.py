@@ -112,7 +112,7 @@ with st.sidebar:
         posted = st.multiselect("posted", CHANNELS, key="create_posted")
     post, posting, posted = enforce_mutual_exclusion(post, posting, posted)
 
-    if st.button("Create", use_container_width=True):
+    if st.button("Create", width='stretch'):
         payload = {"access": access_new, "title": title}
         if not title:
             st.error("Title is required.")
@@ -150,7 +150,7 @@ if not df.empty:
     # nicer order
     cols = ["date", "title", "time", "description", "channels", "date_id"]
     cols = [c for c in cols if c in df.columns]
-    st.dataframe(df[cols], use_container_width=True, hide_index=True)
+    st.dataframe(df[cols], width='stretch', hide_index=True)
 else:
     st.info("No events for this access yet.")
 
@@ -180,9 +180,9 @@ if date_id_sel:
 
             c1, c2, c3 = st.columns([1,1,1])
             with c1:
-                save = st.form_submit_button("Save", use_container_width=True)
+                save = st.form_submit_button("Save", width='stretch')
             with c2:
-                delete = st.form_submit_button("Delete", use_container_width=True)
+                delete = st.form_submit_button("Delete", width='stretch')
             with c3:
                 st.write("")  # spacer
 
